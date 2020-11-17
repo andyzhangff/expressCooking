@@ -1,0 +1,17 @@
+[{
+        "name": "spaghatte",
+        "ingrediant": ["noodle", "pork"],
+        "step": ["boil the noodle", "adding in pork"]
+    },
+    {
+        "name": "steak",
+        "ingrediant": ["garlic", "beef"],
+        "step": ["fry the beef", "adding in garlic"]
+    },
+    {
+        "name": "salad",
+        "ingrediant": ["onion", "carrot"],
+        "step": ["slice the onion", "adding in carrot"]
+    }
+
+]
