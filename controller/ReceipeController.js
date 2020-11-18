@@ -18,15 +18,25 @@ const get_receipes = (req, res) => {
 }
 
 const add_receipe = async(req, res) => {
+    const stepObj = [];
+    for (key in req.body.steps) {
+        stepObj.push({
+            step: req.body.steps[key],
+            stepPath: req.body.stepPicturePath[key]
+        })
+    }
     const receipe = new Receipe({
-        name: req.body.name,
-        ingrediant: req.body.ingrediant,
-        step: req.body.step,
-        owner: req.body.owner
+        name: {
+            receipe_name: req.body.receipeName,
+            receipe_path: req.body.receipePicture,
+            receipeFeature: req.body.receipeFeature,
+        },
+        ingrediant: req.body.ingrediants,
+        step: stepObj
     });
     try {
         await receipe.save();
-        res.status(200).send('receipe saved');
+        res.status(200).json({ result: 'receipe saved' });
     } catch {
         res.status(400).send('receipe saved fail');
     }

@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const UsertestFileUpload = require('./Multer');
+const pictureUploadMulter = require('./Multer');
 const receipeController = require('../controller/ReceipeController');
 
 // Multer File upload settings
-const DIR = './public/';
-const upload = UsertestFileUpload(DIR);
+const DIR = 'public/receipes/';
+const upload = pictureUploadMulter(DIR);
 
-// POST User
-router.post('/create-receipe', upload.array('steps', 30), receipeController.add_receipe);
+const pictureUploadMulterMiddleware = upload.fields([
+    { name: 'receipePictureSource', maxCount: 1 },
+    { name: 'stepPictureSource[]', maxCount: 20 }
+])
+
+router.post('/store-receipe', pictureUploadMulterMiddleware, receipeController.add_receipe);
 
 module.exports = router;
