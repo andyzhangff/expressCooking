@@ -1,9 +1,14 @@
 const multer = require('multer');
+const fs = require('fs');
 
 const uploadFile = (dir) => {
     let storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, dir);
+            const filePath = dir + req.body.receipeName + '/';
+            if (!fs.existsSync(filePath)) {
+                fs.mkdirSync(filePath);
+            }
+            cb(null, filePath);
         },
         filename: (req, file, cb) => {
             const fileName = file.originalname.toLowerCase().split(' ').join('-');

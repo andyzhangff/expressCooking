@@ -19,6 +19,8 @@ const get_receipes = (req, res) => {
 
 const add_receipe = async(req, res) => {
     const stepObj = [];
+    receipe_path = req.files['receipePictureSource'][0]['path'];
+
     for (key in req.body.steps) {
         stepObj.push({
             step: req.body.steps[key],
@@ -34,12 +36,13 @@ const add_receipe = async(req, res) => {
         ingrediant: req.body.ingrediants,
         step: stepObj
     });
-    try {
-        await receipe.save();
-        res.status(200).json({ result: 'receipe saved' });
-    } catch {
-        res.status(400).send('receipe saved fail');
-    }
+    console.log(receipe_path);
+    // try {
+    //     await receipe.save();
+    //     res.status(200).json({ result: 'receipe saved' });
+    // } catch {
+    //     res.status(400).send('receipe saved fail');
+    // }
 }
 
 module.exports = {
