@@ -7,10 +7,6 @@ router.post('/register', userController.user_register);
 
 router.post('/login', userController.user_login);
 
-router.post('/add-receipe', verifyToken, receipeController.add_receipe);
-
-router.get('/get-receipes', verifyToken, receipeController.get_receipes);
-
 router.get('/find', verifyToken, userController.user_find);
 
 router.get('/guard', userController.user_guard);

@@ -13,5 +13,6 @@ const pictureUploadMulterMiddleware = upload.fields([
 ])
 
 router.post('/store-receipe', pictureUploadMulterMiddleware, receipeController.add_receipe);
+router.get('/get-receipe/:id', receipeController.get_receipe)
 
 module.exports = router;
