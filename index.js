@@ -22,6 +22,7 @@ app.use(express.urlencoded({
 }));
 app.use(cors());
 
+
 //Route Middlewares
 app.use('/api/receipes/', receipeRoute);
 app.use('/api/user', userRoute);
