@@ -8,16 +8,8 @@ const get_receipe = (req, res) => {
     const id = Mongoose.Types.ObjectId(req.params.id).str;
         Receipe.find({ receipeId: id }, (err, receipe) => {
             if (err || !receipe) return res.status(404).send('receipe id is wrong');
-            // res.status(200).json(receipe[0]);
-            // res.sendFile(receipe[0]['name']['receipe_path']);
-            // res.sendFile('receipes/test22/baked-macaroni-and-cheese-3.jpg');
-            // res.sendFile(path.join(__dirname + '../public/index.html'));
-            
             res.sendFile(receipe[0]['name']['receipe_path'],{root:'./'});
-          
-            // console.log('./' + receipe[0]['name']['receipe_path']);
         });
-        
 }
 
 const add_receipe = async(req, res) => {
